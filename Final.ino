@@ -25,7 +25,7 @@ void setup() {
 }
 
 void loop() {
-
+  Serial.println("heartbeat");
   if (mfrc522.PICC_IsNewCardPresent()) {
     Serial.println("Card Present");
      
@@ -49,7 +49,10 @@ void loop() {
       
       delay(1000); 
     }
+    mfrc522.PICC_HaltA(); // halt PICC
+    mfrc522.PCD_StopCrypto1(); // stop encryption on PCD
   }
+  delay(1000);
 }
 
 bool checkAuthorization(String scannedUID) {
@@ -74,5 +77,4 @@ void unlockDoor() {
     Serial.println("Door Locked!");
   }
   locked = !locked;
-  return;
 }
