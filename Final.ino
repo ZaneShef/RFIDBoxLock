@@ -25,7 +25,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("heartbeat");
+
   if (mfrc522.PICC_IsNewCardPresent()) {
     Serial.println("Card Present");
      
